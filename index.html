@@ -1,24 +1,111 @@
 <style>
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    transition: opacity .5s ease-in-out .25s;
+  }
+  
+  .container.fade-out {
+    opacity: 0;
+  }
+  
+  .container:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(#4589f7 0%, #1d8c7f 100%);
+    z-index: -1;
+  }
 
   h1.hello {
-    position: fixed;
-    top: 50%;
+    position: absolute;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     
+    width: 70%;
+    
     color: hotpink;
     font-style: italic;
-    font-size: 10vw;
+    font-size: 11vw;
+    text-shadow: 1px 1px 3px black;
   }
   
   .window {
-    
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    transition: transform 1s ease;
   }
   
+  .container.fade-out .window {
+    transform: scale(1.3);
+    transition: transform 1s ease;
+  }
+  
+  .things-i-like {
+    position: relative;
+    display: block;
+    text-align: center;
+    max-width: 100vw;
+  }
+  
+  .things-i-like .pic {
+    position: relative;
+    width: 100%;
+  }
 </style>
 
 <body>
-  <h1 class="hello">my window into the web...</h1>
+  <div class="things-i-like">
+    <img class="pic" src="imgs/the-beach.jpg" alt="i really love the beach">
+    <img class="pic" src="imgs/the-beach.jpg" alt="makes sense i grew up in new jersey">
+    <img class="pic" src="imgs/the-beach.jpg" alt="now i live in chicago and we have the lake and i love that too">
+    
+    <img src="imgs/66316ok93eaxzhn.gif" alt="dance break">
+    <img src="imgs/204923ontr1e40xd.gif" alt="lets dance">
+    
+    <img class="pic" src="imgs/weaving.jpg" alt="weaving">
+    <img src="imgs/luvcats.gif" alt="i love cats" style="margin: 20px 0;">
+    <img src="https://dl.glitter-graphics.net/pub/194/194671y6lyfkowjs.gif" style="margin: 20px;">
+    
+    <img src="imgs/watercaress__1657210679_2877214174674369775_14879694.jpg" alt="i love my cat her name is morel like the mushroom" style="display: block;width: 500px;margin:20px auto;">
+    
+  </div>
   
-  <img class="window" src="" alt="my window">
+  <div class="container">
+    <img class="window" src="imgs/WindowCLR_WRK.gif" alt="my window">
+    <h1 class="hello">my window into the web...</h1>
+  </div>
 </body>
+
+<script>
+
+  let myWindow = document.querySelector('.container');
+  
+  document.addEventListener('keydown', function(e) {
+    console.log(e)
+    if (e.key === 'ArrowRight') {
+      myWindow.classList.add('fade-out');
+    }
+    
+    if (e.key === 'ArrowLeft') {
+      myWindow.classList.remove('fade-out');
+    }
+  })
+
+</script>
